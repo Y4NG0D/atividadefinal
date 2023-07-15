@@ -1,0 +1,109 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(TutorialApp());
+}
+
+class TutorialApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Tutorial de Flutter',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: TutorialPage(),
+    );
+  }
+}
+
+class TutorialPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Tutorial de Flutter'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(
+              'assets/flutter.jpg',
+              width: double.infinity,
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Bem-vindo ao Tutorial de Flutter!',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Neste tutorial, você aprenderá os conceitos básicos de Flutter e como criar aplicativos incríveis usando este framework.',
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Aqui estão alguns tópicos que você aprenderá:',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            TutorialItem(
+              icon: Icons.code,
+              text: 'Sintaxe básica do Flutter',
+            ),
+            TutorialItem(
+              icon: Icons.widgets,
+              text: 'Widgets e elementos de interface',
+            ),
+            TutorialItem(
+              icon: Icons.palette,
+              text: 'Estilização e temas',
+            ),
+            TutorialItem(
+              icon: Icons.layers,
+              text: 'Layouts e posicionamento de elementos',
+            ),
+            TutorialItem(
+              icon: Icons.event_note,
+              text: 'Gerenciamento de estado',
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                print('Próximo passo!');
+              },
+              child: Text('Próximo'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class TutorialItem extends StatelessWidget {
+  final IconData icon;
+  final String text;
+
+  const TutorialItem({
+    Key? key,
+    required this.icon,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(icon),
+        SizedBox(width: 8),
+        Text(text),
+      ],
+    );
+  }
+}
